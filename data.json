@@ -1,0 +1,97 @@
+{
+    "users": {
+        "shivom": {
+            "subjects": {
+                "SMA": {
+                    "attended": 7,
+                    "total": 13,
+                    "classes_per_week": 4,
+                    "importance": "low"
+                },
+                "COMPUTER NETWORK": {
+                    "attended": 2,
+                    "total": 4,
+                    "classes_per_week": 5,
+                    "importance": "high"
+                },
+                "SOFTWARE ENGINEERING": {
+                    "attended": 7,
+                    "total": 13,
+                    "classes_per_week": 4,
+                    "importance": "medium"
+                },
+                "SPM": {
+                    "attended": 4,
+                    "total": 6,
+                    "classes_per_week": 5,
+                    "importance": "medium"
+                }
+            },
+            "target": 70
+        },
+        "abcd": {
+            "target": 65,
+            "subjects": {
+                "SCIENCE": {
+                    "attended": 7,
+                    "total": 8,
+                    "classes_per_week": 7,
+                    "importance": "high"
+                },
+                "MATHS": {
+                    "attended": 7,
+                    "total": 8,
+                    "classes_per_week": 6,
+                    "importance": "high"
+                },
+                "SST": {
+                    "attended": 5,
+                    "total": 9,
+                    "classes_per_week": 6,
+                    "importance": "medium"
+                },
+                "ENGLISH": {
+                    "attended": 6,
+                    "total": 8,
+                    "classes_per_week": 5,
+                    "importance": "medium"
+                },
+                "SANSKRIT": {
+                    "attended": 4,
+                    "total": 10,
+                    "classes_per_week": 3,
+                    "importance": "low"
+                }
+            }
+        },
+        "mnbvc": {
+            "target": 72,
+            "subjects": {
+                "MATHEMATICS": {
+                    "attended": 5,
+                    "total": 5,
+                    "classes_per_week": 8,
+                    "importance": "high"
+                },
+                "IT": {
+                    "attended": 2,
+                    "total": 5,
+                    "classes_per_week": 4,
+                    "importance": "low"
+                },
+                "HINDI": {
+                    "attended": 2,
+                    "total": 4,
+                    "classes_per_week": 5,
+                    "importance": "medium"
+                },
+                "SSC": {
+                    "attended": 3,
+                    "total": 4,
+                    "classes_per_week": 6,
+                    "importance": "medium"
+                }
+            }
+        }
+    }
+}

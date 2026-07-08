@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AttendWise</title>
+
+    <!-- Link External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('add_page') }}">Add</a>
+            <a href="{{ url_for('update_page') }}">Update</a>
+            <a href="{{ url_for('view_page') }}">View</a>
+            <a href="{{ url_for('skip') }}">Skip Decision</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="{{ url_for('home') }}" class="dashboard-btn">🏠 Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+      
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+              {% if session.get("user") %}
+  <div style="
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-bottom:20px;
+">
+
+<a href="{{ url_for('home') }}"
+style="
+background:#3498db;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+🏠 Home
+</a>
+
+<a href="{{ url_for('logout') }}"
+style="
+background:#e74c3c;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+🚪 Logout
+</a>
+
+</div>
+{% endif %}
+{% if session.get("user") %}
+<div class="nav-right"
+    <span class="user-name">Hi, {{ session["user"] }} </span>
+{% endif %}
+
+    </div>
+        <!-- Page Content -->
+        {% block content %}{% endblock %}
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Update Attendance</h1>
+
+<div class="form-box">
+<form method="POST">
+
+    <label>Subject:</label>
+    <select name="subject">
+    {% for subject in subjects %}
+        <option value="{{ subject }}"
+            {% if subject == selected_subject %}selected{% endif %}>
+            {{ subject }}
+        </option>
+    {% endfor %}
+</select>
+
+    <br><br>
+
+   <div class="btn-group">
+    <button type="submit" name="status" value="present" class="btn">Present</button>
+    <button type="submit" name="status" value="absent" class="btn">Absent</button>
+    <a href="/" class="btn secondary">Home</a>
+</div>
+
+</form>
+</div>
+<div class="button-group">
+
+</div>
+{% endblock %}

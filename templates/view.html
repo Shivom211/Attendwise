@@ -1,0 +1,36 @@
+){% extends "base.html" %}
+{% block content %}
+
+<h2>Attendance Report</h2>
+
+<h3>Overall Attendance: {{overall}}%</h3>
+
+<table border="1" cellpadding="6">
+<tr>
+    <th>Subject</th>
+    <th>Attended</th>
+    <th>Total</th>
+    <th>Percentage</th>
+    <th>Action</th>
+</tr>
+
+{% for s in report %}
+<tr>
+    <td>{{s.name}}</td>
+    <td>{{s.attended}}</td>
+    <td>{{s.total}}</td>
+    <td>{{s.percent}}%</td>
+    <td>
+        <form action="/delete/{{s.name}}" method="POST">
+            <button type="submit">Remove</button>
+        </form>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<a href="{{ url_for('home') }}" class="btn secondary">Home</a>
+
+{% endblock %}

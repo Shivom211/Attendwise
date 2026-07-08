@@ -1,0 +1,154 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Today's Decision</h2>
+<h3>{{ message }}</h3>
+<p>Current Overall Attendance: {{ overall }}%</p>
+
+<a href="{{ url_for('home') }}" class="btn secondary">Home</a>
+
+<br><br>
+<h3>🎯 Today's Priority Subjects</h3>
+
+<div style="
+background:#fff;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+">
+
+{% for p in priority_subjects %}
+<div style="margin-bottom:10px;">
+
+<b>{{ loop.index }}. {{ p.subject }}</b>
+
+<br>
+
+Attendance:
+{{ p.percentage }}%
+
+|
+
+Need:
+{{ p.needed_classes }}
+
+classes
+
+|
+
+{{ p.importance }}
+
+Priority
+
+</div>
+
+{% endfor %}
+
+</div>
+<!-- EMPTY CHECK -->
+{% if decisions|length == 0 %}
+    <p style="color:gray;">No subjects added yet 😕</p>
+{% else %}
+<div style="width:100%;margin:0;padding: 20px;border-radius: 12px;margin-top: 20px;">
+<table style="
+    width:100%;
+    border-collapse: collapse;
+    text-align:center;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+   padding: 12px;
+   border-collapse: collapse;
+   table-layout: fixed;
+">
+
+<tr style="background:#f4f6f8;">
+    <th>Subject</th>
+    <th>Attendance %</th>
+    <th>Importance</th>
+    <th>After Skip %</th>
+    <th>Status</th>
+    <th>Advice</th>
+</tr>
+
+{% for d in decisions %}
+<tr
+{% if 'Danger' in d.status %}
+    style="background:#ffe5e5;"
+{% elif 'Risk' in d.status %}
+    style="background:#fff5e5;"
+{% endif %}
+>
+
+<td style="padding:10px; font-weight: bold;word-break:normal;vertical-align: middle;">{{ d.subject }}</td>
+<td style="padding:10px;vertical-align: middle;">{{ d.percentage }}%</td>
+<td style="padding:10px;vertical-align: middle;">{{ d.importance }}</td>
+<td style="padding:10px;vertical-align: middle;">{{ d.after_skip }}%</td>
+
+<td>
+    <div style="display:flex; align-items:center; justify-content:center; gap:6px;">
+        {% if "Danger" in d.status %}
+            <span style="color:#e74c3c;">●</span>
+            <span style="color:#e74c3c; font-weight:500;">Danger</span>
+
+        {% elif "Risk" in d.status %}
+            <span style="color:#f39c12;">●</span>
+            <span style="color:#f39c12;">Risk</span>
+
+        {% else %}
+            <span style="color:#2ecc71;">●</span>
+            <span style="color:#2ecc71;">Safe</span>
+        {% endif %}
+    </div>
+</td>
+
+<td style="padding:10px;width: 220px;text-align: left;vertical-align: middle;">
+    <!-- Advice -->
+    {% if "Must" in d.advice %}
+        <span style="color:red; font-weight:bold;">{{ d.advice }}</span>
+    {% elif "Attend" in d.advice %}
+        <span style="color:orange;">{{ d.advice }}</span>
+    {% elif "Skip" in d.advice %}
+        <span style="color:green;">{{ d.advice }}</span>
+    {% else %}
+    <span style="font-weight:bold;color:red;">
+        {{ d.advice }}
+    </span>
+    
+<div style="
+margin-top:5px;
+padding:5px;
+background:#fff;
+border-radius:6px;
+font-size:12px;
+line-height: 1.4;
+display: block;
+text-align:left;
+">
+
+{% for r in d.reason %}
+<div>{{ r }}</div>
+{% endfor %}
+
+</div>
+{% endif %}
+</td>
+</div>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+
+{% endif %}
+
+
+
+<!-- GRAPH -->
+ <div style="text-align: center;margin-top: 20px;">
+<img src="{{ url_for('static', filename='graph.png') }}"
+     style="width:80%; max-width:700px; display:block; margin:auto;">
+</div>
+{% endblock %}

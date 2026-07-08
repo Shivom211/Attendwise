@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome to AttendWise</h1>
+<p>Your attendance decision assistant</p>
+
+<hr>
+<div style="margin:15px 0;">
+    <a href="{{ url_for('set_target') }}"
+       class="btn"
+       style="
+       background:#28a745;
+       color:white;
+       text-decoration:none;
+       padding:10px 20px;
+       border-radius:8px;
+       font-weight:bold;
+       ">
+       🎯 Set Target
+    </a>
+</div>
+
+<div class="dashboard">
+    <a href="/add" class="card">📚 Add Subject</a>
+    <a href="/update" class="card">✏️ Update Attendance</a>
+    <a href="/view" class="card">📊 View Attendance</a>
+    <a href="/skip" class="card">🤖 Smart Decision</a>
+
+
+{% endblock %}

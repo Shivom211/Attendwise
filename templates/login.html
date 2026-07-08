@@ -1,0 +1,70 @@
+
+{% block content %}
+
+<div style="
+max-width:400px;
+margin:60px auto;
+background:rgb(239, 248, 250);
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+text-align:center;
+">
+
+<h1 style="color:#1e2a78;">📚 AttendWise</h1>
+<p style="color:gray;"> Smart Attendance Decision Assistant</p>
+
+<form method="POST">
+
+<input type="text"
+       name="username"
+       placeholder="Username"
+       required
+       style="
+       width:100%;
+       padding:12px;
+       margin:10px 0;
+       border:1px solid #ddd;
+       border-radius:8px;
+">
+
+<input type="password"
+       name="password"
+       placeholder="Password"
+       required
+       style="
+       width:100%;
+       padding:12px;
+       margin:10px 0;
+       border:1px solid #ddd;
+       border-radius:8px;
+">
+
+<button type="submit"
+style="
+width:100%;
+padding:12px;
+background:#4facfe;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+">
+
+Login
+</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('register') }}">
+Don't have an account? Register
+</a>
+
+</div>
+
+
+{% endblock %}

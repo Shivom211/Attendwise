@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Add Subject</h1>
+
+<div class="form-box">
+<form method="POST">
+
+    <div class="form-group">
+        <label>Subject Name</label>
+        <input type="text" name="subject" value="{{subject}}">
+    </div>
+
+    <div class="form-group">
+        <label>Classes per week</label>
+        <input type="number" name="classes" value="{{classes}}">
+    </div>
+
+    <div class="form-group">
+        <label>Importance</label>
+        <select name="importance">
+    <option value="low" {% if importance=="low" %}selected{% endif %}>Low</option>
+    <option value="medium" {% if importance=="medium" %}selected{% endif %}>Medium</option>
+    <option value="high" {% if importance=="high" %}selected{% endif %}>High</option>
+</select>
+    </div>
+
+    <div class="button-group">
+    <button type="submit">Add Subject</button>
+    <a href="{{ url_for('home') }}" class="btn secondary">Home</a>
+</div>
+
+</form>
+</div>
+
+{% endblock %}
